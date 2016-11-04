@@ -79,8 +79,67 @@
 
 $(document).ready(function(){
 
-// Your code here...
+var leftOperand = " ";
+var operator = " ";
+var rightOperand = " ";
+var result = " ";
 
+$(".number").click(function() {
+    console.log("number event");
+    if (leftOperand == " ") {
+        leftOperand = $(".number").attr("value");
+    } else {
+        if (operator != " " && rightOperand == " ") {
+            rightOperand = $(".number").attr("value");
+        }
+    }
+    console.log("leftOperand = " + leftOperand);
+    console.log("operator = " + operator);
+    console.log("rightOperand = " + rightOperand);
+});
+
+$(".operator").click(function() {
+    console.log("operator event");
+    if (leftOperand != " " && operator == " ") {
+        operator = $(".operator").attr("value");
+    }
+    console.log("leftOperand = " + leftOperand);
+    console.log("operator = " + operator);
+    console.log("rightOperand = " + rightOperand);
+});
+
+$(".equal").click(function() {
+    console.log("equal event");
+    var equation = "";
+    if (leftOperand != " " && operator != " " && rightOperand != " ") {
+        equation += leftOperand;
+        switch (operator) {
+            case "plus":
+                equation += "+";
+                break;
+            case "minus":
+                equation += "-";
+                break;
+            case "times":
+                equation += "*";
+                break;
+            case "divide":
+                equation += "/";
+                break;
+            case "power":
+                equation += "^";
+                break;
+        }
+        equation += rightOperand;
+        result = eval(equation);
+     
+     console.log("leftOperand = " + leftOperand);
+    console.log("operator = " + operator);
+    console.log("rightOperand = " + rightOperand);
+    console.log("equation = " + equation);
+    console.log("result = " + result);
+   }
+});
 
 });
 
